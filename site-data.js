@@ -189,24 +189,62 @@ function defaultData() {
 function getSiteData() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultData();
-    const saved = JSON.parse(raw);
-    // shallow-merge with defaults so newly added default fields
-    // never go missing if a person is running an older saved copy
-    const base = defaultData();
-    return Object.assign({}, base, saved, {
-      credentials: Object.assign({}, base.credentials, saved.credentials),
-      site: Object.assign({}, base.site, saved.site),
-      home: Object.assign({}, base.home, saved.home),
-      about: Object.assign({}, base.about, saved.about),
-      servicesPage: Object.assign({}, base.servicesPage, saved.servicesPage),
-      portfolioPage: Object.assign({}, base.portfolioPage, saved.portfolioPage),
-      awardsPage: Object.assign({}, base.awardsPage, saved.awardsPage),
-      contact: Object.assign({}, base.contact, saved.contact),
-      images: Object.assign({}, base.images, saved.images),
-      services: saved.services || base.services,
-      achievements: saved.achievements || base.achievements,
-      projects: saved.projects || base.projects
+    const saved = raw ? JSON.parse(raw) : {};
+    // Published data is the source of truth for public visitors.
+    // The Admin Panel uses its local draft data until Publish is clicked.
+    // This prevents an old local draft in one browser from overriding
+    // the public GitHub version.
+    const pub = window.PUBLISHED_SITE_DATA || {};
+    const d = defaultData();
+    const base = Object.assign({}, d, pub, {
+      credentials: Object.assign({}, d.credentials, pub.credentials),
+      site: Object.assign({}, d.site, pub.site),
+      home: Object.assign({}, d.home, pub.home),
+      about: Object.assign({}, d.about, pub.about),
+      servicesPage: Object.assign({}, d.servicesPage, pub.servicesPage),
+      portfolioPage: Object.assign({}, d.portfolioPage, pub.portfolioPage),
+      awardsPage: Object.assign({}, d.awardsPage, pub.awardsPage),
+      contact: Object.assign({}, d.contact, pub.contact),
+      images: Object.assign({}, d.images, pub.images),
+      services: pub.services || d.services,
+      achievements: pub.achievements || d.achievements,
+      projects: pub.projects || d.projects
+    });
+    const isAdminPage = !!document.getElementById('admin-shell');
+    if (isAdminPage) {
+      // Admin works on the local draft so you can make several changes
+      // before publishing them together.
+      return Object.assign({}, base, saved, {
+        credentials: Object.assign({}, base.credentials, saved.credentials),
+        site: Object.assign({}, base.site, saved.site),
+        home: Object.assign({}, base.home, saved.home),
+        about: Object.assign({}, base.about, saved.about),
+        servicesPage: Object.assign({}, base.servicesPage, saved.servicesPage),
+        portfolioPage: Object.assign({}, base.portfolioPage, saved.portfolioPage),
+        awardsPage: Object.assign({}, base.awardsPage, saved.awardsPage),
+        contact: Object.assign({}, base.contact, saved.contact),
+        images: Object.assign({}, base.images, saved.images),
+        services: saved.services || base.services,
+        achievements: saved.achievements || base.achievements,
+        projects: saved.projects || base.projects
+      });
+    }
+
+    // Public pages always use the published GitHub data when available.
+    // This ensures the public URL reflects the last successful Publish.
+    return Object.assign({}, d, pub, {
+      credentials: Object.assign({}, d.credentials, pub.credentials),
+      site: Object.assign({}, d.site, pub.site),
+      home: Object.assign({}, d.home, pub.home),
+      about: Object.assign({}, d.about, pub.about),
+      servicesPage: Object.assign({}, d.servicesPage, pub.servicesPage),
+      portfolioPage: Object.assign({}, d.portfolioPage, pub.portfolioPage),
+      awardsPage: Object.assign({}, d.awardsPage, pub.awardsPage),
+      contact: Object.assign({}, d.contact, pub.contact),
+      images: Object.assign({}, d.images, pub.images),
+      services: pub.services || d.services,
+      achievements: pub.achievements || d.achievements,
+      projects: pub.projects || d.projects
     });
   } catch (e) {
     console.error('Site data read failed, using defaults', e);

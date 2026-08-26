@@ -97,6 +97,7 @@ function initDashboard() {
   renderImagesForm();
   renderThemePicker();
   renderSettingsForm();
+  initGitHubPublisher();
 
   showPanel('overview');
 }
@@ -123,7 +124,7 @@ function renderOverview() {
   el.innerHTML = `
     <div class="admin-panel-head">
       <h2>Welcome back, ${escapeHtml(ADMIN_DATA.site.name)}.</h2>
-      <p>Everything you change here goes live on the website the moment you hit Save.</p>
+      <p>Changes are saved in this browser. Use Settings → Publish Changes to GitHub to update your public website.</p>
     </div>
     <div class="overview-grid">
       <div class="overview-card"><div class="num">${ADMIN_DATA.services.length}</div><div class="label">Services listed</div></div>
@@ -134,9 +135,9 @@ function renderOverview() {
       <h3>Quick tips</h3>
       <p class="hint">A few things worth knowing while you're getting started.</p>
       <ul style="color:var(--text-secondary); font-size:0.92rem; line-height:1.9; padding-left:20px;">
-        <li>Changes save to <em>this browser</em>. Open the live site in this same browser to see them.</li>
+        <li>Changes save to <em>this browser</em>. Use <strong>Publish Changes to GitHub</strong> in Settings to update the public site.</li>
         <li>Use the sidebar to jump straight to the page or feature you want to edit.</li>
-        <li>The theme switcher applies instantly across every page — no separate save needed.</li>
+        <li>The theme switcher previews changes instantly. Publish from Settings to update the public GitHub site.</li>
         <li>Visit <strong>Settings</strong> to change your login password before the site goes live.</li>
       </ul>
     </div>
@@ -662,6 +663,24 @@ function renderSettingsForm() {
       </div>
       <button class="admin-save-btn" id="save-credentials-btn">Update Credentials</button>
     </div>
+    <div class="admin-card" id="github-publish-card">
+      <h3>Publish Changes to GitHub</h3>
+      <p class="hint">Make and save your edits in the Admin Panel, then click Publish. The publisher updates <strong>published-data.js</strong> in your Portfolio-2 repository. Your token is kept only in this browser session and is never written into the website files.</p>
+      <div class="admin-form-row">
+        <div class="admin-form-group"><label>GitHub Username</label><input id="gh-owner" value="hassan3011ali-portfolio" autocomplete="off"></div>
+        <div class="admin-form-group"><label>Repository</label><input id="gh-repo" value="Portfolio-2" autocomplete="off"></div>
+      </div>
+      <div class="admin-form-row">
+        <div class="admin-form-group"><label>Branch</label><input id="gh-branch" value="main" autocomplete="off"></div>
+        <div class="admin-form-group"><label>Fine-grained GitHub Token</label><input id="gh-token" type="password" placeholder="Paste token here" autocomplete="new-password"></div>
+      </div>
+      <button class="admin-save-btn" id="publish-github-btn">Publish Current Changes to GitHub</button>
+      <div id="github-publish-status" class="hint" style="margin-top:12px;"></div>
+      <p class="hint" style="margin-top:16px;">
+        First time only: create a GitHub fine-grained token with <strong>Contents: Read and write</strong>
+        access for this repository. Do not share the token with anyone.
+      </p>
+    </div>
     <div class="admin-card">
       <h3>Reset All Content</h3>
       <p class="hint">Wipes every edit made in this browser and restores the site's original built-in content. This cannot be undone.</p>
@@ -700,3 +719,56 @@ function escapeAttr(str) {
 }
 
 document.addEventListener('DOMContentLoaded', boot);
+
+
+/* ---------------------------------------------------------
+   GITHUB PUBLISHER
+--------------------------------------------------------- */
+function initGitHubPublisher() {
+  const tokenInput = document.getElementById('gh-token');
+  const savedToken = sessionStorage.getItem('hassanGithubPublishToken');
+  if (tokenInput && savedToken) tokenInput.value = savedToken;
+  const btn = document.getElementById('publish-github-btn');
+  if (btn) btn.addEventListener('click', publishCurrentDataToGitHub);
+}
+
+function utf8ToBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(binary);
+}
+
+async function publishCurrentDataToGitHub() {
+  const owner = document.getElementById('gh-owner').value.trim();
+  const repo = document.getElementById('gh-repo').value.trim();
+  const branch = document.getElementById('gh-branch').value.trim() || 'main';
+  const token = document.getElementById('gh-token').value.trim();
+  const status = document.getElementById('github-publish-status');
+  const btn = document.getElementById('publish-github-btn');
+  if (!owner || !repo || !token) { status.textContent = 'Please enter your GitHub username, repository, branch, and token.'; return; }
+  sessionStorage.setItem('hassanGithubPublishToken', token);
+  btn.disabled = true; btn.textContent = 'Publishing...'; status.textContent = 'Uploading your changes...';
+  try {
+    const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/published-data.js`;
+    const headers = { 'Accept':'application/vnd.github+json', 'Authorization':`Bearer ${token}`, 'X-GitHub-Api-Version':'2022-11-28', 'Content-Type':'application/json' };
+    let sha = null;
+    const existing = await fetch(`${url}?ref=${encodeURIComponent(branch)}`, {headers});
+    if (existing.ok) sha = (await existing.json()).sha;
+    else if (existing.status !== 404) { const e = await existing.json().catch(()=>({})); throw new Error(e.message || `GitHub returned ${existing.status}.`); }
+    // Never publish Admin login credentials into a public JavaScript file.
+    // Only portfolio/site content is sent to GitHub.
+    const publicData = JSON.parse(JSON.stringify(ADMIN_DATA));
+    delete publicData.credentials;
+    const published = `// Generated by Hassan Portfolio Admin Panel.\\n// Do not edit manually.\\nwindow.PUBLISHED_SITE_DATA = ${JSON.stringify(publicData, null, 2)};\\n`;
+    const body = { message:'Update portfolio from Admin Panel', content:utf8ToBase64(published), branch };
+    if (sha) body.sha = sha;
+    const response = await fetch(url,{method:'PUT',headers,body:JSON.stringify(body)});
+    const result = await response.json().catch(()=>({}));
+    if (!response.ok) throw new Error(result.message || `GitHub returned ${response.status}.`);
+    status.textContent = 'Published successfully. Your GitHub Pages site should update within a minute or two.';
+    toast('Published to GitHub successfully.');
+  } catch (err) {
+    console.error(err); status.textContent = `Publish failed: ${err.message}`; toast('GitHub publish failed.');
+  } finally { btn.disabled=false; btn.textContent='Publish Current Changes to GitHub'; }
+}
