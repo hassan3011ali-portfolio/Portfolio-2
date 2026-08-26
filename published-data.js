@@ -69,7 +69,7 @@ window.PUBLISHED_SITE_DATA = {
     {
       "id": "s1",
       "icon": "grid",
-      "title": "Data Entry & Excel Management",
+      "title": "ata Entry & Excel Management",
       "description": "Accurate data entry, data cleaning, CRM data entry, and organized Excel spreadsheets built to stay accurate as they grow.",
       "price": "10",
       "unit": "/ hour"
