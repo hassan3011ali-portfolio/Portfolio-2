@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Hassan Portfolio</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+<div class="ambient-bg">
+  <div class="grid-overlay"></div>
+  <div class="blob blob-orange"></div>
+  <div class="blob blob-blue"></div>
+  <div class="blob blob-orange-2"></div>
+</div>
+
+<!-- ================= LOGIN SCREEN ================= -->
+<div class="login-screen" id="login-screen">
+  <div class="login-card">
+    <div class="brand-mark-lg">H.</div>
+    <h1>Admin Panel</h1>
+    <p class="sub">Sign in to manage your website's content, images, and theme.</p>
+
+    <div class="login-error" id="login-error"></div>
+
+    <form id="login-form">
+      <div class="admin-form-group">
+        <label>Username</label>
+        <input type="text" id="login-username" autocomplete="username" required>
+      </div>
+      <div class="admin-form-group">
+        <label>Password</label>
+        <input type="password" id="login-password" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Sign In</button>
+    </form>
+
+    <div class="login-hint">
+      <strong>Demo login for testing:</strong><br>
+      Username: <strong>admin</strong><br>
+      Password: <strong>Admin@123</strong><br><br>
+      Change this in Settings before the site goes live.
+    </div>
+  </div>
+</div>
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+<div class="admin-shell" id="admin-shell">
+
+  <aside class="admin-sidebar">
+    <div class="brand">
+      <span class="brand-mark" style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--orange),var(--blue));display:flex;align-items:center;justify-content:center;color:#0B0D10;font-family:var(--font-mono);font-size:0.8rem;">H.</span>
+      Admin Panel
+    </div>
+
+    <nav class="admin-nav">
+      <button class="admin-nav-btn" data-panel="overview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+        Dashboard
+      </button>
+      <button class="admin-nav-btn" data-panel="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+        Home Page
+      </button>
+      <button class="admin-nav-btn" data-panel="about">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+        About Page
+      </button>
+      <button class="admin-nav-btn" data-panel="services">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+        Services
+      </button>
+      <button class="admin-nav-btn" data-panel="portfolio">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        Portfolio
+      </button>
+      <button class="admin-nav-btn" data-panel="awards">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/></svg>
+        Awards
+      </button>
+      <button class="admin-nav-btn" data-panel="contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
+        Contact &amp; Socials
+      </button>
+      <button class="admin-nav-btn" data-panel="images">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>
+        Images
+      </button>
+      <button class="admin-nav-btn" data-panel="theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3a6 6 0 0 0 0 18 3 3 0 0 0 0-6h1a2 2 0 0 0 0-4h-1a2 2 0 0 1 0-4"/></svg>
+        Theme
+      </button>
+      <button class="admin-nav-btn" data-panel="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+        Settings
+      </button>
+    </nav>
+
+    <div class="admin-sidebar-foot">
+      <a href="index.html" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        View Live Site
+      </a>
+      <button id="logout-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+        Log Out
+      </button>
+    </div>
+  </aside>
+
+  <main class="admin-main" id="admin-main">
+
+    <div class="admin-panel" data-panel="overview" id="panel-overview"></div>
+    <div class="admin-panel" data-panel="home" id="panel-home"></div>
+    <div class="admin-panel" data-panel="about" id="panel-about"></div>
+
+    <div class="admin-panel" data-panel="services" id="panel-services">
+      <div class="admin-panel-head">
+        <h2>Services</h2>
+        <p>Add, edit, remove, and price the services shown on your Services page and homepage teaser.</p>
+      </div>
+      <div class="admin-card">
+        <h3>Services Page Heading</h3>
+        <div id="services-hero-form"></div>
+      </div>
+      <div class="admin-card">
+        <h3>Manage Services</h3>
+        <p class="hint">Changes here update both the Home page teaser and the full Services page.</p>
+        <div id="services-list"></div>
+        <button class="admin-add-btn" id="add-service-btn">+ Add New Service</button>
+        <div style="margin-top:20px;">
+          <button class="admin-save-btn" id="save-services-btn">Save All Services</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-panel" data-panel="portfolio" id="panel-portfolio">
+      <div class="admin-panel-head">
+        <h2>Portfolio</h2>
+        <p>Add, edit, remove, and re-categorize the projects shown on your Portfolio page and homepage.</p>
+      </div>
+      <div class="admin-card">
+        <h3>Portfolio Page Heading</h3>
+        <div id="portfolio-hero-form"></div>
+      </div>
+      <div class="admin-card">
+        <h3>Manage Projects</h3>
+        <p class="hint">The first 3 projects here also appear in the Home page's Featured Work section.</p>
+        <div id="portfolio-list"></div>
+        <button class="admin-add-btn" id="add-project-btn">+ Add New Project</button>
+        <div style="margin-top:20px;">
+          <button class="admin-save-btn" id="save-portfolio-btn">Save All Projects</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-panel" data-panel="awards" id="panel-awards">
+      <div class="admin-panel-head">
+        <h2>Awards &amp; Achievements</h2>
+        <p>Add, edit, or remove the achievements shown on your Awards page.</p>
+      </div>
+      <div class="admin-card">
+        <h3>Awards Page Heading</h3>
+        <div id="awards-hero-form"></div>
+      </div>
+      <div class="admin-card">
+        <h3>Manage Achievements</h3>
+        <div id="awards-list"></div>
+        <button class="admin-add-btn" id="add-award-btn">+ Add New Achievement</button>
+        <div style="margin-top:20px;">
+          <button class="admin-save-btn" id="save-awards-btn">Save All Achievements</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-panel" data-panel="contact" id="panel-contact"></div>
+    <div class="admin-panel" data-panel="images" id="panel-images"></div>
+    <div class="admin-panel" data-panel="theme" id="panel-theme"></div>
+    <div class="admin-panel" data-panel="settings" id="panel-settings"></div>
+
+  </main>
+</div>
+
+<div class="admin-toast" id="admin-toast"><span class="dot"></span><span>Saved</span></div>
+
+<script src="site-data.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

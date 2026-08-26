@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hassan — Virtual Assistant & Data Entry Specialist</title>
+<meta name="description" content="Hassan is a Level 2 Fiverr Seller with 6+ years of experience turning scattered data into organized results — data entry, Excel management, transcription, document conversion and web research.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Ambient animated background -->
+<div class="ambient-bg">
+  <div class="grid-overlay"></div>
+  <div class="blob blob-orange"></div>
+  <div class="blob blob-blue"></div>
+  <div class="blob blob-orange-2"></div>
+</div>
+
+<!-- ================= HEADER / NAV ================= -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">H.</span>
+      <span data-site-name>Hassan</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="awards.html">Awards</a>
+      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Hire Me</a>
+    </nav>
+
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="container">
+
+      <div class="hero-visual">
+        <div class="hero-frame">
+          <img id="hero-photo" src="headshot-placeholder.svg" alt="Placeholder professional headshot of Hassan — to be replaced via Admin Panel">
+          <div class="frame-tag">
+            <span><span class="dot"></span>Available for new projects</span>
+            <span>Remote · Worldwide</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <span class="role reveal" data-field="home.heroRole">Virtual Assistant &amp; Data Entry Specialist</span>
+        <h1 class="reveal reveal-delay-1">
+          Hi, I'm <span class="text-gradient" data-site-name-dot>Hassan.</span>
+        </h1>
+        <p class="tagline reveal reveal-delay-2" data-field="home.heroTagline">
+          Turning scattered data into organized results, on time, every time.
+        </p>
+
+        <div class="hero-cta-row reveal reveal-delay-3">
+          <a href="portfolio.html" class="btn btn-primary">
+            View My Work <span class="btn-arrow">→</span>
+          </a>
+          <a href="contact.html" class="btn btn-outline">Start a Project</a>
+        </div>
+
+        <div class="hero-meta reveal reveal-delay-4">
+          <div class="hero-meta-item"><strong data-field="home.stats.0.value">800+</strong><span data-field="home.stats.0.label">Projects completed</span></div>
+          <div class="hero-meta-item"><strong data-field="home.stats.1.value">6+</strong><span data-field="home.stats.1.label">Years of experience</span></div>
+          <div class="hero-meta-item"><strong data-field="home.stats.2.value">2</strong><span data-field="home.stats.2.label">Fiverr Seller Level</span></div>
+          <div class="hero-meta-item"><strong data-field="home.stats.3.value">5.0</strong><span data-field="home.stats.3.label">Average client rating</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= STATS ================= -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+
+        <div class="stat-cell reveal">
+          <div class="stat-number"><span data-counter="800" data-suffix="+">0</span></div>
+          <div class="stat-label">Projects completed</div>
+        </div>
+
+        <div class="stat-cell reveal reveal-delay-1">
+          <div class="stat-number"><span data-counter="6" data-suffix="+">0</span></div>
+          <div class="stat-label">Years of experience</div>
+        </div>
+
+        <div class="stat-cell reveal reveal-delay-2">
+          <div class="stat-number"><span data-counter="2">0</span></div>
+          <div class="stat-label">Fiverr Seller Level</div>
+        </div>
+
+        <div class="stat-cell reveal reveal-delay-3">
+          <div class="stat-number"><span data-counter="5" data-decimals="1">0</span></div>
+          <div class="stat-label">Average client rating</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES TEASER ================= -->
+  <section class="services-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What I Do</span>
+        <h2>Six ways I keep your business organized</h2>
+        <p>From raw spreadsheets to polished documents, every service is built around accuracy, structure, and turnaround you can rely on.</p>
+      </div>
+
+      <div class="services-grid" id="services-teaser-grid">
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg>
+          </div>
+          <h3>Data Entry &amp; Excel</h3>
+          <p>Clean, accurate entry and Excel systems that make your data trustworthy.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>
+          </div>
+          <h3>Document &amp; PDF Conversion</h3>
+          <p>Fast, formatting-perfect conversions between PDF, Word, and Excel.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>
+          </div>
+          <h3>Virtual Assistance</h3>
+          <p>Inbox, calendar, and admin support so you can focus on the bigger picture.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 19v3M8 22h8"/><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/></svg>
+          </div>
+          <h3>Transcription</h3>
+          <p>Precise audio-to-text transcripts, formatted and ready to use.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3>Web Research &amp; Lead Generation</h3>
+          <p>Targeted research and verified lead lists built for outreach that converts.</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Business Naming</h3>
+          <p>Distinctive, research-backed name options for new ventures and products.</p>
+        </div>
+
+      </div>
+
+      <div class="services-foot reveal">
+        <a href="services.html" class="btn btn-outline">See All Services <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED WORK ================= -->
+  <section class="work-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Featured Work</span>
+        <h2>A snapshot of recent projects</h2>
+        <p>A small sample of the data, documents, and research work delivered for clients across industries.</p>
+      </div>
+
+      <div class="work-grid" id="featured-work-grid">
+
+        <div class="work-card reveal">
+          <div class="work-thumb">
+            <div class="thumb-surface" style="background: linear-gradient(135deg, #1B1F26, #24303A);">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#2EC5FF" stroke-width="1.3" opacity="0.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
+            </div>
+            <div class="thumb-overlay"><span>View project details →</span></div>
+          </div>
+          <div class="work-body">
+            <span class="work-cat">Excel &amp; Data Entry</span>
+            <h3>Inventory Tracking System</h3>
+            <p>500+ SKU spreadsheet rebuilt with formulas &amp; dashboards.</p>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-1">
+          <div class="work-thumb">
+            <div class="thumb-surface" style="background: linear-gradient(135deg, #241C16, #3A2A1B);">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#FF7A29" stroke-width="1.3" opacity="0.65"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg>
+            </div>
+            <div class="thumb-overlay"><span>View project details →</span></div>
+          </div>
+          <div class="work-body">
+            <span class="work-cat">Document Conversion</span>
+            <h3>Contract Bundle → Editable Word</h3>
+            <p>120-page scanned PDF converted with formatting preserved.</p>
+          </div>
+        </div>
+
+        <div class="work-card reveal reveal-delay-2">
+          <div class="work-thumb">
+            <div class="thumb-surface" style="background: linear-gradient(135deg, #16241C, #1B3A2A);">
+              <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#7FDBFF" stroke-width="1.3" opacity="0.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <div class="thumb-overlay"><span>View project details →</span></div>
+          </div>
+          <div class="work-body">
+            <span class="work-cat">Web Research</span>
+            <h3>B2B Lead List, 1,000 Contacts</h3>
+            <p>Verified decision-maker contacts across 6 target industries.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="work-foot reveal">
+        <a href="portfolio.html" class="btn btn-primary">View Full Portfolio <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Client Feedback</span>
+        <h2>What clients say after working with me</h2>
+      </div>
+
+      <div class="testimonial-viewport reveal">
+        <div class="testimonial-track">
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="quote">"Hassan cleaned up a spreadsheet that had been a mess for two years. Everything is finally organized, and he explained exactly what he changed."</p>
+            <div class="testimonial-client">
+              <div class="client-avatar">JM</div>
+              <div>
+                <div class="client-name">Jordan M.</div>
+                <div class="client-role">E-commerce Founder</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="quote">"Fast, accurate transcription with zero back-and-forth. I've sent Hassan every recording since our first project together."</p>
+            <div class="testimonial-client">
+              <div class="client-avatar">SR</div>
+              <div>
+                <div class="client-name">Sara R.</div>
+                <div class="client-role">Podcast Producer</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="quote">"The lead list was exactly the quality I needed — verified, categorized, and delivered ahead of schedule."</p>
+            <div class="testimonial-client">
+              <div class="client-avatar">DK</div>
+              <div>
+                <div class="client-name">David K.</div>
+                <div class="client-role">Sales Consultant</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="quote">"Hassan turned a stack of scanned PDFs into a clean, searchable document library. Genuinely a relief to hand this off."</p>
+            <div class="testimonial-client">
+              <div class="client-avatar">AL</div>
+              <div>
+                <div class="client-name">Amara L.</div>
+                <div class="client-role">Operations Manager</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="testimonial-controls"></div>
+    </div>
+  </section>
+
+  <!-- ================= TOOLS MARQUEE ================= -->
+  <section class="marquee-section">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom: 40px;">
+        <span class="eyebrow">Tools &amp; Platforms</span>
+        <h2>Working inside the tools you already use</h2>
+      </div>
+    </div>
+
+    <div class="marquee-wrap reveal">
+      <div class="marquee-track">
+        <div class="tool-item"><span class="tool-dot"></span>Excel</div>
+        <div class="tool-item"><span class="tool-dot"></span>Google Sheets</div>
+        <div class="tool-item"><span class="tool-dot"></span>HubSpot</div>
+        <div class="tool-item"><span class="tool-dot"></span>Zoho</div>
+        <div class="tool-item"><span class="tool-dot"></span>Salesforce</div>
+        <div class="tool-item"><span class="tool-dot"></span>WordPress</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CLOSING CTA ================= -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-panel reveal">
+        <h2 data-field="home.ctaHeading">Ready to get your data organized?</h2>
+        <p data-field="home.ctaText">Tell me what you're working with — I'll reply with a clear plan and timeline, usually within a few hours.</p>
+        <div class="cta-btn-row">
+          <a href="contact.html" class="btn btn-primary">Contact Me <span class="btn-arrow">→</span></a>
+          <a href="portfolio.html" class="btn btn-outline">See My Work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark">H.</span>
+          <span data-site-name>Hassan</span>
+        </a>
+        <p>Virtual Assistant &amp; Data Entry Specialist helping businesses turn scattered data into organized results.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="awards.html">Awards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="https://www.fiverr.com/hassan_30?public_mode=true" data-contact="fiverr-href" target="_blank" rel="noopener">Fiverr Profile</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <div class="social-row">
+          <a href="https://www.fiverr.com/hassan_30?public_mode=true" data-contact="fiverr-href" class="social-icon" aria-label="Fiverr" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/hassan-ali-785b611b7/" data-contact="linkedin-href" class="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4V8z"/></svg>
+          </a>
+          <a href="mailto:hassan3011ali@gmail.com" data-contact="email-href" class="social-icon" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg>
+          </a>
+          <a href="contact.html" class="social-icon" aria-label="WhatsApp - available on request">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.03c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.12.11-1.8-.11-.42-.13-.95-.3-1.64-.6-2.88-1.24-4.76-4.15-4.9-4.35-.14-.19-1.17-1.56-1.17-2.97 0-1.42.74-2.11 1-2.4.26-.29.57-.36.76-.36h.55c.18 0 .42-.03.65.5.24.55.82 1.9.89 2.04.07.14.12.3.02.5-.1.19-.15.31-.29.48-.15.17-.31.38-.44.5-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2 1.11.99 2.05 1.3 2.34 1.44.29.14.46.12.63-.07.17-.19.72-.83.91-1.12.19-.29.38-.24.63-.14.26.1 1.63.77 1.9.91.28.14.46.2.53.32.07.12.07.68-.17 1.35z"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 <span data-site-name>Hassan</span>. All rights reserved.</span>
+      <span>Designed &amp; built for a Level 2 Fiverr Seller. · <a href="admin.html" style="color:var(--text-muted);">Admin</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="site-data.js"></script>
+<script src="site-render.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
